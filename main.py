@@ -1,6 +1,7 @@
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
+import sys
 import pygame
 
 from constants import *
@@ -33,9 +34,16 @@ def main():
 			u.update(dt)
 		for d in drawable:
 			d.draw(screen)
-		
+		for a in asteroids:
+			if a.collision(player):
+				print("Game over!")
+				sys.exit()
+			
 		
 		pygame.display.flip()
+
+		
+			
 
 		dt = clock.tick(60) / 1000
 	
